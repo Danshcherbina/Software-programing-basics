@@ -9,6 +9,8 @@ for(i=0; i<4; i++) {
 return;
 }
 
+
+
 void flipV(int mat[4][4]){
 int i, j;
 int matr[4][4];
@@ -46,7 +48,7 @@ return;
 void transposSide(int mat[4][4]){
 int i, j;
 int matr[4][4];
-for ( i = 0; i < N; ++i)
+for ( i = 0; i < 4; ++i)
 {
   for ( j = 0; j <4; ++j)
     matr[i][j] = mat[i][j];
