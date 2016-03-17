@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include "array.h"
+int main(){
+    srand(time(NULL));
+    array_t a1=Array_new(6);
+    printf("Array with size 6 was created\n");
+    Array_addEl(a1, 1);
+    Array_addEl(a1, 12);
+    Array_addEl(a1, 23);
+    Array_addEl(a1, 32);
+    Array_addEl(a1, 44);
+    Array_addEl(a1, 6);
+    printf("6 elements was added:");
+    Array_print(a1);
+    array_t a2=Array_newRand();
+    printf("\n");
+    int s1=Array_getSize(a2);
+    printf("random array was created with size %i:", s1);
+    Array_print(a2);
+    printf("\n");
+    //Array_setSize(a2, 12);
+    //s1=Array_getSize(a2);
+    //printf("random arrays size was changed to %i\n", s1);
+    Array_delEl(a1, 6);
+    printf("6 was deleted from first array:");
+    Array_print(a1);
+    printf("\n");
+    Array_cross(a1, a2);
+    array_t a3=Array_merge(a1,a2);
+    printf("There is merged arrays:");
+    Array_print(a3);
+    printf("\n");
+    printf("There is merged arrays without 1-st array:");
+    Array_diff(a3,a1);
+    printf("\n");
+    Array_delete(a1);
+    Array_delete(a2);
+    Array_delete(a3);
+
+return 0;
+}
