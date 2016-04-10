@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1460294404 source:c:\Программирование\prjct12\libthread_windows.c
+	<windows.h>
+	"thread.h"
+	"mutex.h"
+
+1460294404 c:\Программирование\prjct12\thread.h
+
+1460294404 c:\Программирование\prjct12\mutex.h
+
+1460311759 source:c:\Программирование\prjct12\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<windows.h>
+	"thread.h"
+	"mutex.h"
+	"printer.h"
+
+1460312086 source:c:\Программирование\prjct12\printer.c
+
+1460311417 c:\Программирование\prjct12\printer.h
+
