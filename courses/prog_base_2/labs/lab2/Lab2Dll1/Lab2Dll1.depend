@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1461344856 source:c:\Программирование\lab2nottest\lab2dll1\main.cpp
+	"main.h"
+
+1461346094 c:\Программирование\lab2nottest\lab2dll1\main.h
+	<windows.h>
+	"list.h"
+
+1461343106 c:\Программирование\lab2nottest\lab2dll1\list.h
+

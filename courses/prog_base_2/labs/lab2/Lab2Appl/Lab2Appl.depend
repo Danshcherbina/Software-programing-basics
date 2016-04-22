@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1461348948 source:c:\Программирование\lab2nottest\lab2appl\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<windows.h>
+	"list.h"
+
+1461347133 c:\Программирование\lab2nottest\lab2slib\list.h
+
