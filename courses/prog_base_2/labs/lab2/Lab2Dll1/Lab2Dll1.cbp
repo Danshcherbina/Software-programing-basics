@@ -21,8 +21,7 @@
 				</Compiler>
 				<Linker>
 					<Add library="user32" />
-					<Add library="C:\Программирование\lab2NotTest\Lab2Dll1\bin\Debug\libLab2Dll1.a" />
-					<Add directory="C:/Программирование/lab2NotTest/Lab2Slib/bin/Debug" />
+					<Add library="C:\Программирование\lab2NotTest\Lab2Slib\bin\Debug\libLab2Slib.a" />
 				</Linker>
 			</Target>
 			<Target title="Release">

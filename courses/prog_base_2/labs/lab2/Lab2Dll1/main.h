@@ -15,7 +15,7 @@ extern "C"
 {
 #endif
 
-//#include <stdio.h>
+#include <stdio.h>
 #include "list.h"
 
 int DLL_EXPORT compare(list_t * self);
