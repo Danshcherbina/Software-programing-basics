@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1460465759 source:c:\Программирование\lab1\client.c
+	<stdlib.h>
+	"client.h"
+	"server.h"
+
+1462878852 c:\Программирование\lab1\client.h
+
+1463170245 c:\Программирование\lab1\server.h
+
+1463154361 source:c:\Программирование\lab1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdarg.h>
+	<stddef.h>
+	<setjmp.h>
+	<cmocka.h>
+	"client.h"
+	"server.h"
+
+1463166674 source:c:\Программирование\lab1\server.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"client.h"
+	"server.h"
+
