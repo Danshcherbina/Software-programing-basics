@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1463759028 source:c:\Программирование\test_1\list.c
+	<stdio.h>
+	<stdlib.h>
+	"list.h"
+
+1463759028 c:\Программирование\test_1\list.h
+
+1463759028 source:c:\Программирование\test_1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"list.h"
+
+1463830598 source:d:\software-programing-basics\courses\prog_base_2\tests\test_1\test_1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"os.h"
+
+1463774029 d:\software-programing-basics\courses\prog_base_2\tests\test_1\llist\list.h
+
+1463830513 d:\software-programing-basics\courses\prog_base_2\tests\test_1\os_2_slib\os.h
+
