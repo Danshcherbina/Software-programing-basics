@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1463935731 source:c:\Программирование\lab3_2s\list.c
+	<stdlib.h>
+	"list.h"
+
+1463922204 c:\Программирование\lab3_2s\list.h
+
+1463941242 source:c:\Программирование\lab3_2s\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<windows.h>
+	"stack.h"
+	"list.h"
+
+1463939383 c:\Программирование\lab3_2s\stack.h
+
+1463941291 source:c:\Программирование\lab3_2s\stack.c
+	<stdio.h>
+	<stdlib.h>
+	"stack.h"
+	"list.h"
+

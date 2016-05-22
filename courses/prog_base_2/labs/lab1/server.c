@@ -34,6 +34,7 @@ client_t Client_new(int number){
     if (cn==NULL) errorMsg(MEMORRY_ERROR);
     cn->number=number;
     cn->messageCount=0;
+    cn->sdArray=NULL;
     cn->msgArray=NULL;
     return cn;
 }
@@ -83,8 +84,8 @@ void Client_printMessages(client_t this){
             printf("This client have no messages\n");
             break;
         }
-        printf("%i clients messages:", this->number);
-        printf("%s", this->msgArray[i]);
+        printf("%i clients messages:\n", this->number);
+        printf("sender- client #%i: %s\n",this->sdArray[i] , this->msgArray[i]);
     }
 }
 
@@ -96,6 +97,8 @@ void Client_sendMessage(client_t sender, client_t dest){
     char line[100];
     printf("Enter the message to send:");
     gets(line);
+    dest->sdArray=(int*)realloc(dest->sdArray,(dest->messageCount+1)*sizeof(int));
+    dest->sdArray[dest->messageCount]=sender->number;
     dest->msgArray=(char**)realloc(dest->msgArray,(dest->messageCount+1)*sizeof(char*));
     dest->msgArray[dest->messageCount++]=strdup(line);
 }

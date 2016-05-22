@@ -40,15 +40,15 @@ static void sendMessage_void_ClientTwoMsgCountOne(void **state)
 
 int main()
 {
-/*
     server_t test=Server_new(1);
     Server_crtClient(test);
     Server_crtClient(test);
     Server_printInfo(test);
     Server_sendMsg(test, 2, 1);
+    Server_sendMsg(test, 2, 1);
     Client_printMessages(test->clientList[0]);
     Server_free(test);
-    */
+
     const struct CMUnitTest tests[] =
     {
         cmocka_unit_test(new_oneValue_NumberOneValue),

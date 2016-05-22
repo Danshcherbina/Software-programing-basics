@@ -4,6 +4,7 @@
 typedef struct client_s{
     int number;
     int messageCount;
+    int *sdArray;
     char **msgArray;
 } * client_t;
 void Client_printMessages(client_t this);
