@@ -79,12 +79,12 @@ void Server_printInfo(server_t this){
 
 void Client_printMessages(client_t this){
     int i;
+    printf("%i clients messages:\n", this->number);
     for(i=0;i<this->messageCount;i++){
         if (this->msgArray==NULL){
             printf("This client have no messages\n");
             break;
         }
-        printf("%i clients messages:\n", this->number);
         printf("sender- client #%i: %s\n",this->sdArray[i] , this->msgArray[i]);
     }
 }
@@ -93,10 +93,7 @@ int Client_getMessageCount(client_t this){
     return this->messageCount;
 }
 
-void Client_sendMessage(client_t sender, client_t dest){
-    char line[100];
-    printf("Enter the message to send:");
-    gets(line);
+void Client_sendMessage(client_t sender, client_t dest, char line[100]){
     dest->sdArray=(int*)realloc(dest->sdArray,(dest->messageCount+1)*sizeof(int));
     dest->sdArray[dest->messageCount]=sender->number;
     dest->msgArray=(char**)realloc(dest->msgArray,(dest->messageCount+1)*sizeof(char*));
@@ -107,5 +104,8 @@ void Server_sendMsg(server_t this, int senderInd, int destInd){
     if(senderInd>this->clientCount||destInd>this->clientCount||destInd<0||senderInd<0){
         errorMsg(INDEX_ERROR );
     }
-    Client_sendMessage(this->clientList[senderInd-1], this->clientList[destInd-1]);
+    char line[100];
+    printf("Enter the message to send:");
+    gets(line);
+    Client_sendMessage(this->clientList[senderInd-1], this->clientList[destInd-1], line);
 }

@@ -31,18 +31,18 @@
 	"client.h"
 	"server.h"
 
-1463837873 d:\software-programing-basics\courses\prog_base_2\labs\lab1\client.h
+1464006485 d:\software-programing-basics\courses\prog_base_2\labs\lab1\client.h
 
 1463170245 d:\software-programing-basics\courses\prog_base_2\labs\lab1\server.h
 
-1463838182 source:d:\software-programing-basics\courses\prog_base_2\labs\lab1\server.c
+1464006607 source:d:\software-programing-basics\courses\prog_base_2\labs\lab1\server.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"client.h"
 	"server.h"
 
-1463837033 source:d:\software-programing-basics\courses\prog_base_2\labs\lab1\main.c
+1464006543 source:d:\software-programing-basics\courses\prog_base_2\labs\lab1\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

@@ -1,6 +1,6 @@
-
 #include <SFML/Graphics.hpp>
 using namespace sf;
+
 void menu(RenderWindow & window) {
 	Texture menuTexture1, menuTexture2, menuTexture3, menuTexture4, menuBackground;
 	menuTexture1.loadFromFile("images/111.png");
@@ -44,7 +44,6 @@ void menu(RenderWindow & window) {
 		window.draw(menu2);
 		window.draw(menu3);
 		window.draw(menu4);
-
 		window.display();
 	}
 }

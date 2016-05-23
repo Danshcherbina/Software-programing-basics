@@ -13,13 +13,14 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add directory="../../Program Files (x86)/sfml/include" />
+					<Add option="-DSFML_STATIC" />
+					<Add directory="C:/Program Files (x86)/sfml/include" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-graphics" />
 					<Add library="sfml-window" />
 					<Add library="sfml-system" />
-					<Add directory="../../Program Files (x86)/sfml/lib" />
+					<Add directory="C:/Program Files (x86)/sfml/lib" />
 				</Linker>
 			</Target>
 			<Target title="Release">

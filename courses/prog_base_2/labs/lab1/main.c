@@ -29,11 +29,12 @@ static void crtClient_void_NumberAndClientNumberValueOne(void **state)
 
 static void sendMessage_void_ClientTwoMsgCountOne(void **state)
 {
+    char line[100]="Hi";
     int theValue= 1;
     server_t serverT = Server_new(theValue);
     Server_crtClient(serverT);
     Server_crtClient(serverT);
-    Client_sendMessage(serverT->clientList[0],serverT->clientList[1] );
+    Client_sendMessage(serverT->clientList[0],serverT->clientList[1], line);
     assert_int_equal(Client_getMessageCount(serverT->clientList[1]), theValue);
     Server_free(serverT);
 }

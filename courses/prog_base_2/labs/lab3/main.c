@@ -59,7 +59,7 @@ int main()
         cmocka_unit_test(pop_void_CountZeroReturnVal),
 
     };
-    return cmocka_run_group_tests(tests, NULL, NULL);
+    //return cmocka_run_group_tests(tests, NULL, NULL);
     srand(time(NULL));
     int i;
     stack_t * s1=stack_new();
@@ -86,8 +86,9 @@ int main()
         int chs=0;
         int val=0;
         chs=1+ rand()%2;
-        val=-10+rand()%21;
-        switch(chs){
+        //val=-10+rand()%21;
+        val=-10+rand()%10;
+                switch(chs){
         case 1:
             {
                 if(val>=0){
@@ -117,5 +118,6 @@ int main()
     }
     stack_free(s1);
     stack_free(s2);
-    return 0;
+    return cmocka_run_group_tests(tests, NULL, NULL);
+    //return 0;
 }

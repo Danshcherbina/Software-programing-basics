@@ -21,3 +21,29 @@
 	"stack.h"
 	"list.h"
 
+1463935731 source:d:\software-programing-basics\courses\prog_base_2\labs\lab3\list.c
+	<stdlib.h>
+	"list.h"
+
+1463922204 d:\software-programing-basics\courses\prog_base_2\labs\lab3\list.h
+
+1463943252 source:d:\software-programing-basics\courses\prog_base_2\labs\lab3\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<windows.h>
+	<stdarg.h>
+	<stddef.h>
+	<setjmp.h>
+	<cmocka.h>
+	"stack.h"
+	"list.h"
+
+1463939383 d:\software-programing-basics\courses\prog_base_2\labs\lab3\stack.h
+
+1463941291 source:d:\software-programing-basics\courses\prog_base_2\labs\lab3\stack.c
+	<stdio.h>
+	<stdlib.h>
+	"stack.h"
+	"list.h"
+
