@@ -16,5 +16,7 @@ void server_write(server_t * self, const char * response);
 void server_addOwnerName(server_t * self, char * name);
 void server_printOwner(server_t * self);
 void server_addOwnerName(server_t * self, char * name);
+void server_printMsg(server_t * self);
+void server_setRequest(server_t * self, char * request);
 
 #endif // SERVER_FAKE_H_INCLUDED

@@ -11,17 +11,43 @@
 
 1461494025 d:\software-programing-basics\courses\prog_base_2\tests\test_2\cjson.h
 
-1464431702 source:d:\software-programing-basics\courses\prog_base_2\tests\test_2\main.c
+1464440699 source:d:\software-programing-basics\courses\prog_base_2\tests\test_2\main.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
+	<sqlite3.h>
+	<winsock2.h>
+	<winsock.h>
+	<time.h>
 	"cJSON.h"
 	"server_fake.h"
+	"musician.h"
+	"list.h"
 
-1464431702 d:\software-programing-basics\courses\prog_base_2\tests\test_2\server_fake.h
+1464440734 d:\software-programing-basics\courses\prog_base_2\tests\test_2\server_fake.h
 
-1464431767 source:d:\software-programing-basics\courses\prog_base_2\tests\test_2\server_fake.c
+1464440734 source:d:\software-programing-basics\courses\prog_base_2\tests\test_2\server_fake.c
 	<stdlib.h>
 	<stdio.h>
 	"server_fake.h"
+
+1464437059 source:d:\software-programing-basics\courses\prog_base_2\tests\test_2\list.c
+	<stdlib.h>
+	"list.h"
+	"musician.h"
+
+1464437087 d:\software-programing-basics\courses\prog_base_2\tests\test_2\list.h
+	"musician.h"
+
+1464440584 d:\software-programing-basics\courses\prog_base_2\tests\test_2\musician.h
+
+1450774966 c:\sqlite-amalgamation-201512211522\sqlite3.h
+	<stdarg.h>
+
+1464437224 source:d:\software-programing-basics\courses\prog_base_2\tests\test_2\musician.c
+	<sqlite3.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"musician.h"
 

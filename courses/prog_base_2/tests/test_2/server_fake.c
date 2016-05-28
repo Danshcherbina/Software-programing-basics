@@ -17,6 +17,11 @@ server_t * server_new(void) {
     return self;
 }
 
+void server_setRequest(server_t * self, char * request){
+    self->request=request;
+}
+
+
 void server_addOwnerName(server_t * self, char * name){
     self->requestName=name;
 }
@@ -30,6 +35,10 @@ void server_free(server_t * self) {
         free(self->request);
     }
     free(self);
+}
+
+void server_printMsg(server_t * self){
+    printf("%s", self->request);
 }
 
 const char * server_read(server_t * self) {
