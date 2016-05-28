@@ -4,6 +4,7 @@
 #include "server_fake.h"
 
 struct server_s {
+    char * requestName;
     char * request;
 };
 
@@ -12,9 +13,17 @@ static char * getline(void);
 server_t * server_new(void) {
     server_t * self = malloc(sizeof(server_t));
     self->request = NULL;
+    self->requestName=NULL;
     return self;
 }
 
+void server_addOwnerName(server_t * self, char * name){
+    self->requestName=name;
+}
+
+void server_printOwner(server_t * self){
+    printf("%s", self->requestName);
+}
 
 void server_free(server_t * self) {
     if (NULL != self->request) {
@@ -33,7 +42,7 @@ const char * server_read(server_t * self) {
 }
 
 void server_write(server_t * self, const char * response) {
-    printf("Browser output> %s\n", response);
+    printf("Browser output> %s\n",self->request);
 }
 
 //

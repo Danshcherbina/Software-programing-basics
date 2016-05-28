@@ -7,7 +7,8 @@
 int main()
 {
     server_t * server = server_new();
-    const char cmd[1024];
+    char * cmd = malloc(100);
+    //const char cmd[1024];
     student_t st = {
 			.student = "Shcherbina Dan",
 			.group = "KP-52",
@@ -18,24 +19,16 @@ int main()
 	cJSON_AddItemToObject(jStudent, "group", cJSON_CreateString(st.group));
 	cJSON_AddItemToObject(jStudent, "variant", cJSON_CreateNumber(st.variant));
 	char * jsonString = cJSON_Print(jStudent);
+	server_addOwnerName(server, jsonString);
 	 while (1){
             int a=0;
-        printf("enter your request:\n");
+        printf("enter your responce:\n");
         printf(">>");
         gets(cmd);
-         if(strcmp(cmd,"help")==0){
-           printf("GET /info - get student info\nexit- exit programm\n");
-            a++;
-         }
         if(strcmp(cmd,"GET /info")==0){
-           server_write(server, jsonString);
+           server_printOwner(server);
             a++;
             break;
-        }
-        if(strcmp(cmd,"exit")==0){
-            system("cls");
-           //return EXIT_SUCCESS;
-           break;
         }
         if (0==a){
             printf("unknown comand, try again");
@@ -43,14 +36,6 @@ int main()
             system("cls");
         }
 	 }
-	 char response[1024] = "";
-	 while (1) {
-        const char * request = server_read(server);
-        printf("Server> %s\n", request);
-        // create response
-        strcpy(response, "RESPONSE!");
-        server_write(server, response);
-    }
     server_free(server);
     return 0;
 }

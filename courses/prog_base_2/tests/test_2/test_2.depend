@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1461494025 source:d:\software-programing-basics\courses\prog_base_2\tests\test_2\cjson.c
+	<string.h>
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	<float.h>
+	<limits.h>
+	<ctype.h>
+	"cJSON.h"
+
+1461494025 d:\software-programing-basics\courses\prog_base_2\tests\test_2\cjson.h
+
+1464431702 source:d:\software-programing-basics\courses\prog_base_2\tests\test_2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"cJSON.h"
+	"server_fake.h"
+
+1464431702 d:\software-programing-basics\courses\prog_base_2\tests\test_2\server_fake.h
+
+1464431767 source:d:\software-programing-basics\courses\prog_base_2\tests\test_2\server_fake.c
+	<stdlib.h>
+	<stdio.h>
+	"server_fake.h"
+
