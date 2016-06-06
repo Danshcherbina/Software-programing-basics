@@ -1,0 +1,64 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<musicians>
+
+    <musician>
+        <name>Oleg</name>
+        <surname>Grinachev</surname>
+        <birthday>1989-08-15</birthday>
+        <albums>30</albums>
+        <rating>9.99</rating>
+        <genre name = "Classic">
+            <speciality>Winds</speciality>
+            <instruments>
+                <instrument>flute</instrument>
+                <instrument>bassoon</instrument>
+            </instruments>
+        </genre>
+    </musician>
+
+    <musician>
+        <name>Helen</name>
+        <surname>Kissman</surname>
+        <birthday>2030-08-31</birthday>
+        <albums>15</albums>
+        <rating>5.0</rating>
+        <genre name = "Modern">
+            <speciality>Stringed instruments</speciality>
+            <instruments>
+                <instrument>pianoforte</instrument>
+                <instrument>ukulele</instrument>
+            </instruments>
+        </genre>
+    </musician>
+
+    <musician>
+        <name>Victoria</name>
+        <surname>Odonell</surname>
+        <birthday>1991-08-19</birthday>
+        <albums>45</albums>
+        <rating>10.0</rating>
+        <genre name = "Modern">
+            <speciality>Stringed instruments</speciality>
+            <instruments>
+                <instrument>pianoforte</instrument>
+                <instrument>ukulele</instrument>
+            </instruments>
+        </genre>
+    </musician>
+
+    <musician>
+        <name>Victor</name>
+        <surname>Lomov</surname>
+        <birthday>9001-12-31</birthday>
+        <albums>12</albums>
+        <rating>3.14</rating>
+        <genre name = "Hard-Core">
+            <speciality>Stringed instruments</speciality>
+            <instruments>
+                <instrument>guitar</instrument>
+                <instrument>bas-guitar</instrument>
+            </instruments>
+        </genre>
+    </musician>
+
+</musicians>
