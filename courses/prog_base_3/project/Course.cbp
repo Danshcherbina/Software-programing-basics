@@ -40,6 +40,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Tetris.cpp" />
+		<Unit filename="Tetris.hpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

@@ -6,6 +6,7 @@
 #include <sstream>
 #include <iostream>
 
+
 using namespace sf;
 
 std::string intToStr(int n)
@@ -362,11 +363,11 @@ class Map
         }
 };
 
-int main()
+int GameT(sf::RenderWindow & window, int hs)
 {
-    int hs=10;
     srand(time(0));
-    sf::RenderWindow window(sf::VideoMode(14 * SIZE, 18 * SIZE), "", sf::Style::None);
+    int h=hs;
+    //sf::RenderWindow window(sf::VideoMode(14 * SIZE, 18 * SIZE), "", sf::Style::None);
     window.setFramerateLimit(30);
       Map map;
     Part part;
@@ -378,17 +379,18 @@ int main()
     text1.setPosition(310,90);
     text1.setColor(sf::Color::Green);
     Text text("Score: " + intToStr(map.getScore()), font, 20);
-    //text.setString(("Score: " + intToStr(map.getScore())));
     text.setPosition(20,90);
     text.setColor(sf::Color::Green);
-    //text.setCharacterSize(20);
     while(window.isOpen())
     {
         sf::Event event;
         while(window.pollEvent(event))
         {
-            if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
-                window.close();
+            if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape){
+                //window.close();
+                //menu(window);
+                return h;
+                }
             if(event.type == sf::Event::Closed)
                 window.close();
             if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Right)
@@ -451,16 +453,16 @@ int main()
 
         if(map.isFull())
         {
-            if(map.getScore()>hs){
-                hs=map.getScore();
+            if(map.getScore()>h){
+                h=map.getScore();
             }
             text.setString("Score " + intToStr(map.getScore()) + "\n" + "Press enter to restart\n ESC to exit the game");
             map.reset();
             gameOver = true;
         }
-        text1.setString("Score " + intToStr(map.getScore())+"\n\nHighscore:\n"+intToStr(hs));
+        text1.setString("Score " + intToStr(map.getScore())+"\n\nHighscore:\n"+intToStr(h));
         window.draw(text1);
         window.display();
     }
-    return 0;
+    return h;
 }
