@@ -20,6 +20,7 @@
 					<Add library="sfml-graphics" />
 					<Add library="sfml-window" />
 					<Add library="sfml-system" />
+					<Add library="sfml-audio" />
 					<Add directory="C:/Program Files (x86)/sfml/lib" />
 				</Linker>
 			</Target>
@@ -40,9 +41,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Snake.hpp" />
 		<Unit filename="Tetris.cpp" />
 		<Unit filename="Tetris.hpp" />
+		<Unit filename="TetroCar.cpp" />
+		<Unit filename="TetroCar.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="snake.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

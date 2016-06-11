@@ -294,7 +294,7 @@ class Map
             for(int y=0;y < 4;y++)
                 for(int x=0;x < 4;x++)
                     if((part.getPosY() + y >= 0) && ( ( data[part.getPosY() + y + 1][part.getPosX() + x] && part.getElement(x, y) ) ||
-                       ( part.getElement(x, y) && part.getPosY() + y >= HEIGHT - 1)) )
+                       ( part.getElement(x, y) && part.getPosY() + y > HEIGHT )) )
                         return true;
 
             return false;
@@ -389,8 +389,6 @@ int GameT(sf::RenderWindow & window, int hs)
         while(window.pollEvent(event))
         {
             if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape){
-                //window.close();
-                //menu(window);
                 return h;
                 }
             if(event.type == sf::Event::Closed)

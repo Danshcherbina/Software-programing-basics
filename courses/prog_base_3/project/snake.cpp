@@ -49,7 +49,7 @@ int snake(sf::RenderWindow & window, int hs)
     pauseMessage.setColor(Color::White);
     pauseMessage.setString("Press space to start the game, ESC to exit");
 
-	//The score :D
+	//The score
 	Text score;
 	score.setFont(font);
 	score.setCharacterSize(10);
@@ -71,18 +71,15 @@ int snake(sf::RenderWindow & window, int hs)
 	scoreBox.setOutlineThickness(-3.f);
 	scoreBox.setPosition(0, 480);
 
-	//An apple :D
+	//An apple
 	RectangleShape apple(Vector2f(8, 8));
 	apple.setPosition(-10, -10);
 	apple.setFillColor(Color::Green);
 	restart(player, score, currentScore);
 
-	//Used in the Konami code (just an experiment)
+	//Used in the Konami code
 	int Konami = 0;
 
-	 //////////////////////////
-	//SNAKE//Enter Game Loop//
-   //////////////////////////
     while (window.isOpen())
     {
 		//gets the position of the player before it moves; used in player movement

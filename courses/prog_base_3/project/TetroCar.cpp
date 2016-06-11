@@ -21,21 +21,21 @@ bool SHAPE[4][3] = { {0,1,0},
 
 enum wallIndexes { I = 0, J = 1, S = 2};
 
-bool WALLS[][1][9] ={ { {1,1,1,1,1,1,0,0,0} },
-                      { {0,0,0,1,1,1,1,1,1} },
-                      { {1,1,1,0,0,0,1,1,1} } };
+bool WALLS[][9] ={  {1,1,1,1,1,1,0,0,0} ,
+                       {0,0,0,1,1,1,1,1,1} ,
+                       {1,1,1,0,0,0,1,1,1} };
 
 class Wall
 {
     private:
         int wallIndex;
-        int data[1][9], posX, posY;
+        int data[9], posX, posY;
         sf::Color color;
 
         void fillData()
         {
                 for(int m=0;m < 9;m++)
-                    data[0][m] = WALLS[wallIndex][0][m];
+                    data[m] = WALLS[wallIndex][m];
         }
 
     public:
@@ -65,7 +65,7 @@ class Wall
         bool isValid(int yOffset = 0)
         {
                 for(int x=0;x < 9;x++)
-                    if(data[0][x] && (posY +yOffset > HEIGHT) )
+                    if(data[x] && (posY +yOffset > HEIGHT) )
                     {
                         return false;
                     }
@@ -76,7 +76,7 @@ class Wall
         void draw(sf::RenderWindow & window)
         {
                 for(int m=0;m < 9;m++)
-                    if(data[0][m])
+                    if(data[m])
                     {
                         drawQuad(window, (m + posX) * SIZE, posY * SIZE, color);
                     }
@@ -91,7 +91,7 @@ class Wall
         }
 
         bool getEl(int x){
-            return data[0][x];
+            return data[x];
         }
 };
 
@@ -142,7 +142,7 @@ class Player
                 for(int m=0;m < 3;m++)
                     if(data[i][m])
                     {
-                        drawQuad(window, (m + posX) * SIZE, (i + posY) * SIZE, sf::Color::White);
+                        drawQuad(window, (m + posX) * SIZE, (i + posY) * SIZE, sf::Color::Cyan);
                     }
         }
         int getPosX(){
@@ -202,25 +202,20 @@ int GameTc(sf::RenderWindow & window, int hs)
             }
             if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
                 gameOver = false;
-        //if(gameOver)
-        //{
-         //   text.setCharacterSize(20);
-        //    window.draw(text);
-        //    window.display();
-        //    continue;
-        //}
-        //if(tick % 30 == 0)
-        //    wall.move(1);
-        //if(map.isCollision(part)&&!gameOver)
-        //{
-        //    map.addPart(part);
-        //    map.destroyLines();
-        //    part = Part();
-        //}
         }
         window.clear();
         if(!gameOver){
+                if(score<20){
 			if(moveClock.getElapsedTime().asSeconds() >= .035){
+				wall.move(1);
+				moveClock.restart();
+			}}
+			else if(score<40){
+            if(moveClock.getElapsedTime().asSeconds() >= .033){
+				wall.move(1);
+				moveClock.restart();
+			}
+			} else if(moveClock.getElapsedTime().asSeconds() >= .03){
 				wall.move(1);
 				moveClock.restart();
 			}
