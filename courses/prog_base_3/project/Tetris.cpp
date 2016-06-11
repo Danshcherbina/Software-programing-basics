@@ -294,7 +294,7 @@ class Map
             for(int y=0;y < 4;y++)
                 for(int x=0;x < 4;x++)
                     if((part.getPosY() + y >= 0) && ( ( data[part.getPosY() + y + 1][part.getPosX() + x] && part.getElement(x, y) ) ||
-                       ( part.getElement(x, y) && part.getPosY() + y > HEIGHT )) )
+                       ( part.getElement(x, y) && part.getPosY() + y >= HEIGHT-1 )) )
                         return true;
 
             return false;
@@ -383,6 +383,8 @@ int GameT(sf::RenderWindow & window, int hs)
     Text text("Score: " + intToStr(map.getScore()), font, 20);
     text.setPosition(20,90);
     text.setColor(sf::Color::Green);
+    int countT=0;
+    Clock moveClock;
     while(window.isOpen())
     {
         sf::Event event;
@@ -437,13 +439,32 @@ int GameT(sf::RenderWindow & window, int hs)
             if(map.getScore()>h){
                 h=map.getScore();
             }
+            countT=0;
             text.setString("Score " + intToStr(map.getScore()) + "\n" + "Press enter to restart\n ESC to exit the game");
             map.reset();
             gameOver = true;
             continue;
         }
-        if(tick % 30 == 0&&!gameOver)
-            part.move(0, 1);
+        if(!gameOver){
+            if(countT<20){
+            if(moveClock.getElapsedTime().asSeconds() >= .35){
+				part.move(0, 1);
+				countT++;
+				moveClock.restart();
+            }
+            } else
+            if(countT<60){
+                    if(moveClock.getElapsedTime().asSeconds() >= .25){
+                    part.move(0, 1);
+                    countT++;
+                    moveClock.restart();
+            }
+            } else if(moveClock.getElapsedTime().asSeconds() >= .15){
+                    part.move(0, 1);
+                    countT++;
+                    moveClock.restart();
+            }
+        }
 
         if(map.isCollision(part)&&!gameOver)
         {
@@ -454,11 +475,6 @@ int GameT(sf::RenderWindow & window, int hs)
 
         map.draw(window);
         part.draw(window);
-
-        if(tick <= 30)
-            tick++;
-        else
-            tick = 1;
 
         text1.setString("Score " + intToStr(map.getScore())+"\n\nHighscore:\n"+intToStr(h));
         window.draw(text1);

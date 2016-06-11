@@ -18,7 +18,6 @@ bool DoRectsCollide(RectangleShape& apple, std::vector<RectangleShape>& player);
 enum MOVING{UP, DOWN, LEFT, RIGHT};
 const int SCREEN_WIDTH = 420, SCREEN_HEIGHT = 540;
 
-//Used to prevent deaths when new segments are added to the player
 Clock invinvibleTimer;
 
 int snake(sf::RenderWindow & window, int hs)
@@ -28,7 +27,6 @@ int snake(sf::RenderWindow & window, int hs)
 
 	bool isPlaying = false;
 
-	//stores all the squares that make up the player.
 	std::vector<RectangleShape> player;
 
 	int move = UP;
@@ -41,48 +39,52 @@ int snake(sf::RenderWindow & window, int hs)
 		return EXIT_FAILURE;
 	}
 
-	//Displayed before the game starts and whenever the player dies
     Text pauseMessage;
     pauseMessage.setFont(font);
 	pauseMessage.setCharacterSize(10);
     pauseMessage.setPosition(SCREEN_WIDTH / 3+10, SCREEN_HEIGHT - 40);
-    pauseMessage.setColor(Color::White);
-    pauseMessage.setString("Press space to start the game, ESC to exit");
+    pauseMessage.setColor(Color::Green);
+    pauseMessage.setString("Press space to start the game,\n ESC to exit");
 
-	//The score
 	Text score;
 	score.setFont(font);
 	score.setCharacterSize(10);
 	score.setPosition(20, 490);
-	score.setColor(Color::White);
+	score.setColor(Color::Green);
 	int currentScore = 0;
 
 	Text hscore;
 	hscore.setFont(font);
 	hscore.setCharacterSize(10);
 	hscore.setPosition(20, 510);
-	hscore.setColor(Color::White);
+	hscore.setColor(Color::Green);
 	hscore.setString("Highscore: " + intToStr(h));
 
-	//Acts as the bottom boundary for the player and contains any text displayed
+    RectangleShape wallUp(Vector2f(SCREEN_WIDTH,2));
+    wallUp.setFillColor(Color::Green);
+    wallUp.setPosition(0, 0);
+
+    RectangleShape wallRDown(Vector2f(2,480));
+    wallRDown.setFillColor(Color::Green);
+    wallRDown.setPosition(418, 0);
+
+    RectangleShape wallLDown(Vector2f(2,480));
+    wallLDown.setFillColor(Color::Green);
+    wallLDown.setPosition(0, 0);
+
 	RectangleShape scoreBox(Vector2f(SCREEN_WIDTH, SCREEN_HEIGHT - 480));
 	scoreBox.setFillColor(Color::Black);
-	scoreBox.setOutlineColor(Color::White);
+	scoreBox.setOutlineColor(Color::Green);
 	scoreBox.setOutlineThickness(-3.f);
 	scoreBox.setPosition(0, 480);
-
-	//An apple
 	RectangleShape apple(Vector2f(8, 8));
 	apple.setPosition(-10, -10);
-	apple.setFillColor(Color::Green);
+	apple.setFillColor(Color::Red);
 	restart(player, score, currentScore);
-
-	//Used in the Konami code
 	int Konami = 0;
 
     while (window.isOpen())
     {
-		//gets the position of the player before it moves; used in player movement
 		Vector2f lastPosition(player.at(0).getPosition().x, player.at(0).getPosition().y);
 
         Event event;
@@ -91,7 +93,6 @@ int snake(sf::RenderWindow & window, int hs)
             if (event.type == Event::Closed)
                 window.close();
 			if(event.type == event.KeyPressed){
-				//Restarts the game
 				if(event.key.code == Keyboard::Space){
                     hscore.setString("Highscore: " + intToStr(h));
 					if(!isPlaying)
@@ -103,7 +104,6 @@ int snake(sf::RenderWindow & window, int hs)
 				if(event.key.code == Keyboard::Escape){
 					return h;
 				}
-				//Gets player input every .07 seconds to prevent moving back into yourself, causing death.
 				if(inputClock.getElapsedTime().asSeconds() >= 0.07){
 					if(event.key.code == Keyboard::Up && move != DOWN)
 						move = UP; inputClock.restart();
@@ -149,19 +149,19 @@ int snake(sf::RenderWindow & window, int hs)
 
 		window.clear();
 		drawPlayer(player, window);
+		window.draw(wallUp);
+		window.draw(wallRDown);
+		window.draw(wallLDown);
 		window.draw(scoreBox);
 		window.draw(score);
 		window.draw(hscore);
 		window.draw(apple);
 
-		//Runs functions for playing the game if the player hasn't lost yet
 		if(isPlaying){
-			//moves the player about every .09 seconds (limits speed)
 			if(moveClock.getElapsedTime().asSeconds() >= .09){
 				movePlayer(player, move, lastPosition);
 				moveClock.restart();
 			}
-			//Adds 10 to the score if the snake eats the apple
 			if(DoRectsCollide(apple, player)){
 				currentScore += 10;
 				hscore.setString("Highscore: " + intToStr(h));
@@ -183,7 +183,6 @@ int snake(sf::RenderWindow & window, int hs)
     return h;
 }
 
-//Resets player positions, puts the apple in a random spot, resets snake length
 void restart(std::vector<RectangleShape>& player, Text& score, int& currentScore, RectangleShape* apple){
 	player.clear();
 	player.push_back(RectangleShape(Vector2f(8, 8)));
@@ -205,7 +204,6 @@ void restart(std::vector<RectangleShape>& player, Text& score, int& currentScore
 		}
 }
 
-//Loops through the player vector to display each piece of the snake
 void drawPlayer(std::vector<RectangleShape>& player, RenderWindow& window){
 	std::vector<RectangleShape>::iterator iter;
 	for(iter = player.begin(); iter < player.end(); iter++){
@@ -254,8 +252,6 @@ bool DoRectsCollide(RectangleShape& apple, std::vector<RectangleShape>& player){
 			player.push_back(RectangleShape(Vector2f(8, 8)));
 			player.back().setPosition(player.begin()->getPosition().x, player.begin()->getPosition().y);
 		}
-		//restarts the invincible timer so checkLose doesn't kill the
-		//player when new parts of the snake are addded
 		invinvibleTimer.restart();
 		return true;
 	}
@@ -265,15 +261,10 @@ bool DoRectsCollide(RectangleShape& apple, std::vector<RectangleShape>& player){
 
 bool checkLose(std::vector<RectangleShape>& player){
 	std::vector<RectangleShape>::iterator iter;
-
-	//Checks if player is out of bounds
 	if(player.at(0).getPosition().x < 0 || player.at(0).getPosition().x > SCREEN_WIDTH - 10 ||
 	   player.at(0).getPosition().y < 0 || player.at(0).getPosition().y > 470){
 			return true;
 	}
-	//checks if the snake's head is inside its body
-	//if the player just ate an apple, it waits .09 seconds for the
-	//player to move and .03 seconds more just in case .09 isn't enough
 	if(invinvibleTimer.getElapsedTime().asSeconds() >= .12){
 		for(iter = player.begin() + 1; iter < player.end(); iter++){
 			if(player.at(0).getPosition() == iter->getPosition())

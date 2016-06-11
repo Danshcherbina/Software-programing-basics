@@ -32,8 +32,8 @@ void hshow(sf::RenderWindow & window, int tetris, int snake, int tCar){
         hs1.setColor(Color::Magenta);
 		hs2.setColor(Color::Magenta);
 		hs3.setColor(Color::Magenta);
+		if(btNum!=1)
 		backB.setColor(Color::Magenta);
-		btNum=0;
 		window.clear(Color(129, 181, 221));
 		if (IntRect(120, 200, 100, 20).contains(Mouse::getPosition(window))) { backB.setColor(Color::Blue); btNum = 1; }
 		sf::Event event;
@@ -42,7 +42,11 @@ void hshow(sf::RenderWindow & window, int tetris, int snake, int tCar){
                 window.close();
                 return;
         }
-            if (Mouse::isButtonPressed(Mouse::Left))
+            if(event.type == sf::Event::KeyPressed&&(event.key.code==sf::Keyboard::Down||event.key.code==sf::Keyboard::Up)){
+                backB.setColor(Color::Blue);
+                btNum=1;
+            }
+            if (Mouse::isButtonPressed(Mouse::Left)||(event.type == sf::Event::KeyPressed&&event.key.code==sf::Keyboard::Return))
 		{
 		    if (btNum == 1) return;
 		    continue;
@@ -84,7 +88,7 @@ void menu(sf::RenderWindow & window) {
 	Text menu6("Exit " , font, 20);
 	Sprite menuBg(menuBackground);
 	bool isMenu = 1;
-	int menuNum = 0;
+	int menuNum = 1;
 	int stat=1;
 	menu1.setPosition(120, 80);
 	menu2.setPosition(120, 120);
@@ -96,12 +100,21 @@ void menu(sf::RenderWindow & window) {
     menu5.setColor(Color::Magenta);
 	while (isMenu)
 	{
+	    if(menuNum!=1)
 		menu1.setColor(Color::Magenta);
+		else menu1.setColor(Color::Blue);
+		if(menuNum!=2)
 		menu2.setColor(Color::Magenta);
+		else menu2.setColor(Color::Blue);
+		if(menuNum!=3)
 		menu3.setColor(Color::Magenta);
+		else menu3.setColor(Color::Blue);
+		if(menuNum!=4)
 		menu4.setColor(Color::Magenta);
+		else menu4.setColor(Color::Blue);
+		if(menuNum!=6)
 		menu6.setColor(Color::Magenta);
-		menuNum = 0;
+		else menu6.setColor(Color::Blue);
 		window.clear(Color(129, 181, 221));
 
 		if (IntRect(120, 80, 220, 20).contains(Mouse::getPosition(window))) { menu1.setColor(Color::Blue); menuNum = 1; }
@@ -121,7 +134,17 @@ void menu(sf::RenderWindow & window) {
                 window.close();
                 return;
         }
-		if (Mouse::isButtonPressed(Mouse::Left))
+        if(event.type == sf::Event::KeyPressed&&event.key.code==sf::Keyboard::Up){
+                if(menuNum==1)
+                menuNum=6;
+                else menuNum--;
+            }
+        if(event.type == sf::Event::KeyPressed&&event.key.code==sf::Keyboard::Down){
+                if(menuNum==6)
+                menuNum=1;
+                else menuNum++;
+            }
+		if (Mouse::isButtonPressed(Mouse::Left)||(event.type == sf::Event::KeyPressed&&event.key.code==sf::Keyboard::Return))
 		{
 			if (menuNum == 1) {hsT=GameT(window,hsT);}
 			if (menuNum == 2) {hsS=snake(window,hsS);};
