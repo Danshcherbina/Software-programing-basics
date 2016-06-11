@@ -367,7 +367,6 @@ int GameT(sf::RenderWindow & window, int hs)
 {
     srand(time(0));
     int h=hs;
-    //sf::RenderWindow window(sf::VideoMode(14 * SIZE, 18 * SIZE), "", sf::Style::None);
     window.setFramerateLimit(30);
       Map map;
     Part part;
@@ -376,6 +375,9 @@ int GameT(sf::RenderWindow & window, int hs)
     Font font;
     font.loadFromFile("game_over.ttf");
     Text text1("Score: " , font, 10);
+    sf::RectangleShape rectangle(sf::Vector2f(5, 540));
+    rectangle.setFillColor(sf::Color::Green);
+    rectangle.setPosition(sf::Vector2f(301, 1));
     text1.setPosition(310,90);
     text1.setColor(sf::Color::Green);
     Text text("Score: " + intToStr(map.getScore()), font, 20);
@@ -393,28 +395,28 @@ int GameT(sf::RenderWindow & window, int hs)
                 }
             if(event.type == sf::Event::Closed)
                 window.close();
-            if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Right)
+            if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Right&&!gameOver)
             {
                 Part p = part;
                 part.move(1, 0);
                 if(map.isCollision(part))
                     part = p;
             }
-            if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Left)
+            if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Left&&!gameOver)
             {
                 Part p = part;
                 part.move(-1, 0);
                 if(map.isCollision(part))
                     part = p;
             }
-            if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Down)
+            if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Down&&!gameOver)
             {
                 while(!map.isCollision(part))
                 {
                     part.move(0, 1);
                 }
             }
-            if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Up)
+            if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Up&&!gameOver)
             {
                 Part p = part;
                 part.rotate();
@@ -425,18 +427,27 @@ int GameT(sf::RenderWindow & window, int hs)
                 gameOver = false;
         }
         window.clear();
-
         if(gameOver)
         {
+            text.setCharacterSize(20);
             window.draw(text);
             window.display();
             continue;
         }
-
-        if(tick % 30 == 0)
+        if(map.isFull())
+            {
+            if(map.getScore()>h){
+                h=map.getScore();
+            }
+            text.setString("Score " + intToStr(map.getScore()) + "\n" + "Press enter to restart\n ESC to exit the game");
+            map.reset();
+            gameOver = true;
+            continue;
+        }
+        if(tick % 30 == 0&&!gameOver)
             part.move(0, 1);
 
-        if(map.isCollision(part))
+        if(map.isCollision(part)&&!gameOver)
         {
             map.addPart(part);
             map.destroyLines();
@@ -451,17 +462,9 @@ int GameT(sf::RenderWindow & window, int hs)
         else
             tick = 1;
 
-        if(map.isFull())
-        {
-            if(map.getScore()>h){
-                h=map.getScore();
-            }
-            text.setString("Score " + intToStr(map.getScore()) + "\n" + "Press enter to restart\n ESC to exit the game");
-            map.reset();
-            gameOver = true;
-        }
         text1.setString("Score " + intToStr(map.getScore())+"\n\nHighscore:\n"+intToStr(h));
         window.draw(text1);
+        window.draw(rectangle);
         window.display();
     }
     return h;
