@@ -9,20 +9,42 @@
 
 int sumNumb(const char * myString);
 
-static void sumNumb_OneString_resSumInt(void** state){
+static void sumNumb_mix_OneString_resSumInt(void** state){
     const char * str="H311o my fr13nd -11";
     int sum=313;
     int res=sumNumb(str);
     assert_int_equal(res, sum);
 }
 
+static void sumNumb_digitBuyMinus_OneString_resSumInt(void** state){
+    const char * str="100-20wqrqw";
+    int sum=80;
+    int res=sumNumb(str);
+    assert_int_equal(res, sum);
+}
+
+static void sumNumb_negativeOnly_OneString_resSumInt(void** state){
+    const char * str="-100wqrwq -20wqrqw wqrwq-15";
+    int sum=-135;
+    int res=sumNumb(str);
+    assert_int_equal(res, sum);
+}
+
+static void sumNumb_neibourMinuses_OneString_resSumInt(void** state){
+    const char * str="--100wqrwq --20wqrqw wqrwq-15";
+    int sum=-135;
+    int res=sumNumb(str);
+    assert_int_equal(res, sum);
+}
+
 int main()
 {
-    int res=sumNumb("100-20wqrqw");
-    printf("%i\n", res);
     const struct CMUnitTest tests[] =
     {
-        cmocka_unit_test(sumNumb_OneString_resSumInt),
+        cmocka_unit_test(sumNumb_mix_OneString_resSumInt),
+        cmocka_unit_test(sumNumb_digitBuyMinus_OneString_resSumInt),
+        cmocka_unit_test(sumNumb_negativeOnly_OneString_resSumInt),
+        cmocka_unit_test(sumNumb_neibourMinuses_OneString_resSumInt),
     };
     return cmocka_run_group_tests(tests, NULL, NULL);
 }
