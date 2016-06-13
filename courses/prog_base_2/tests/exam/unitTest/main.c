@@ -18,6 +18,8 @@ static void sumNumb_OneString_resSumInt(void** state){
 
 int main()
 {
+    int res=sumNumb("100-20wqrqw");
+    printf("%i\n", res);
     const struct CMUnitTest tests[] =
     {
         cmocka_unit_test(sumNumb_OneString_resSumInt),
@@ -32,12 +34,16 @@ int j;
 int total=0;
        for(j = 0; j <strlen(myString); j++){
             if (myString[j]=='-'){
+                    if(cnt!=0){
+                        total=total+atoi(buff);
+                        cnt=0;
+                        buff[0]='\0';
+                    }
                 buff[cnt]=myString[j];
                 buff[cnt+1]='\0';
                 cnt++;
                 continue;
-            }
-            if (isdigit(myString[j])==0){
+            }else if (isdigit(myString[j])==0){
                     total=total+atoi(buff);
                     cnt=0;
                     buff[0]='\0';
