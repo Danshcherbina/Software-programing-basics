@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1463830513 source:d:\software-programing-basics\courses\prog_base_2\tests\test_1\os_2_slib\main.c
+1463830941 source:d:\software-programing-basics\courses\prog_base_2\tests\test_1\os_2_slib\main.c
 	<stdio.h>
 	<stdlib.h>
 	<limits.h>
