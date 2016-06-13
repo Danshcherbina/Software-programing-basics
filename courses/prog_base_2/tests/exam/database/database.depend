@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1465819240 source:d:\software-programing-basics\courses\prog_base_2\tests\exam\database\list.c
+	<stdlib.h>
+	"list.h"
+	"student.h"
+
+1465819201 d:\software-programing-basics\courses\prog_base_2\tests\exam\database\list.h
+	"student.h"
+
+1465819691 d:\software-programing-basics\courses\prog_base_2\tests\exam\database\student.h
+
+1465819256 source:d:\software-programing-basics\courses\prog_base_2\tests\exam\database\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<sqlite3.h>
+	"list.h"
+	"student.h"
+
+1450774966 c:\sqlite-amalgamation-201512211522\sqlite3.h
+	<stdarg.h>
+
+1465819270 source:d:\software-programing-basics\courses\prog_base_2\tests\exam\database\student.c
+	<sqlite3.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"student.h"
+	"list.h"
+
