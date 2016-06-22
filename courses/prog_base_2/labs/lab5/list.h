@@ -22,4 +22,6 @@ list_getCount(list_t * self);
 musician_t *
 list_getEl(list_t * self, int index);
 
+int list_indById(list_t * self, int id);
+
 #endif // LIST_H_INCLUDED

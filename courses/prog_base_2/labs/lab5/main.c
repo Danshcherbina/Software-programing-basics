@@ -6,7 +6,7 @@
 #include <winsock.h>
 #include <time.h>
 #include "cJSON.h"
-#include "musician.h"
+#include "server.h"
 
 #define MAXBUFLEN 20480
 #define NO_FLAGS_SET 0
@@ -41,7 +41,7 @@ int main()
         }
     //musician_print(get_musician(db,1));
     list_t * l2=list_new();
-    select_musicians(db,l2,2,15000.0, 21);
+    select_musicians(db,l2,2,15000.0, 7);
     for(i=0;i<l2->count;i++){
             if(l2->arr[i]!=NULL){
                 musician_print(l1->arr[i]);

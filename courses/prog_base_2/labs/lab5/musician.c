@@ -163,34 +163,20 @@ void select_musicians(dataBase *db, list_t * list, int filter1, double filter2, 
     sqlite3_stmt *stmt = NULL;
     const char *sql = malloc(1000);
     switch(state){
-case 3:
-    sprintf(sql, "SELECT * FROM musician WHERE IncomePerMonth > ?1 AND MusInstr = ?2;");
-    break;
-case 5:
-    sprintf(sql, "SELECT * FROM musician WHERE IncomePerMonth < ?1 AND MusInstr = ?2;");
-    break;
 case 7:
-    sprintf(sql, "SELECT * FROM musician WHERE IncomePerMonth = ?1 AND MusInstr > ?2;");
-    break;
-case 11:
-    sprintf(sql, "SELECT * FROM musician WHERE IncomePerMonth = ?1 AND MusInstr < ?2;");
-    break;
-case 21:
     sprintf(sql, "SELECT * FROM musician WHERE IncomePerMonth > ?1 AND MusInstr > ?2;");
     break;
-case 35:
+case 6:
     sprintf(sql, "SELECT * FROM musician WHERE IncomePerMonth < ?1 AND MusInstr > ?2;");
     break;
-case 33:
+case 3:
     sprintf(sql, "SELECT * FROM musician WHERE IncomePerMonth > ?1 AND MusInstr < ?2;");
     break;
-case 55:
+case 2:
     sprintf(sql, "SELECT * FROM musician WHERE IncomePerMonth < ?1 AND MusInstr < ?2;");
     break;
-    case 1:
     default:
-        sprintf(sql, "SELECT * FROM musician WHERE IncomePerMonth = ?1 AND MusInstr = ?2;");
-        break;
+    break;
     }
     int rc = sqlite3_prepare_v2(db->db, sql, strlen(sql) + 1, &stmt, NULL);
     sqlite3_bind_int(stmt, 2, filter1);

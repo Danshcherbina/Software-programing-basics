@@ -49,6 +49,16 @@ list_getEl(list_t * self, int index) {
     return self->arr[index];
 }
 
+int list_indById(list_t * self, int id){
+    int i;
+    for(i=0;i<self->count;i++){
+        if(self->arr[i]->id==id){
+           return i;
+        }
+    }
+    return -1;
+}
+
 void list_delById(list_t * self, int id){
     int i;
     for(i=0;i<self->count;i++){
